@@ -92,7 +92,7 @@ var card = document.getElementById('card');
 
 connectButton.addEventListener('click', function(){
 
-  navigator.webProfile.connect().then(function(){
+  navigator.webProfile.getID().then(function(){
     connectButton.setAttribute('connected', navigator.webProfile.id);
     navigator.webProfile.getProfile().then(function(profile){
       document.body.style.backgroundImage = 'url(' + profile.cover.url + ')';
@@ -100,7 +100,7 @@ connectButton.addEventListener('click', function(){
       card.lastElementChild.textContent = profile.name.formatted;
     })
   }).catch(function(){
-    alert('The user does not wish to connect their Web Profile');
+    console.log('The user does not wish to connect their Web Profile');
   });
 
 })
